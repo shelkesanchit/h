@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SoulBuddy - Advanced Spiritual Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #000000, #140117, #32023a);
+            font-family: Arial, sans-serif;
+            color: white;
+            perspective: 1000px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            animation: float 6s ease-in-out infinite;
+            transform-style: preserve-3d;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateX(0) rotateY(0);
+            }
+            25% {
+                transform: translateY(-10px) rotateX(2deg) rotateY(2deg);
+            }
+            50% {
+                transform: translateY(0) rotateX(-2deg) rotateY(-2deg);
+            }
+            75% {
+                transform: translateY(10px) rotateX(2deg) rotateY(2deg);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #ffc32c;
+           
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #e6e6fa;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+            transform-style: preserve-3d;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background:  #85087f;
+            color: rgb(250, 249, 249);
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(147, 112, 219, 0.3);
+        }
+
+        /* Floating particles animation */
+        .container::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(255, 105, 180, 0.1) 100%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>SoulBuddy</h1>
+            <p class="subtitle">Your Advanced Astrological Guide</p>
+            
+            <form action="{{ url_for('calculate') }}" method="post">
+                <div class="form-group">
+                    <label for="name">Your Name:</label>
+                    <input type="text" id="name" name="name" required 
+                           placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth:</label>
+                    <input type="date" id="dob" name="dob" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="time">Time of Birth:</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="latitude">Birth Place Latitude:</label>
+                    <input type="number" id="latitude" name="latitude" step="any" 
+                           placeholder="e.g., 28.6139" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="longitude">Birth Place Longitude:</label>
+                    <input type="number" id="longitude" name="longitude" step="any" 
+                           placeholder="e.g., 77.2090" required>
+                </div>
+                
+                <button type="submit">Get Detailed Reading</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
